@@ -1,0 +1,858 @@
+-------------------------------------+++++++++++--------------------------------------------
+associatedtype: Cho phép tạo 1 tên bất kỳ cho 1 loại biến trong khai báo của 1 protocol. Biến này được qui định là loại nào khi protocol đó được adopt.
+protocol Entertainment
+{
+    associatedtype MediaType
+}
+class Foo : Entertainment
+{
+    typealias MediaType = String // Bất cứ loại nào đều được
+}
+class : là thành phần không thể thiếu trong mọi ứng dụng, chúng giúp chúng ta tổ chức và quản lý code thành những khối, nó có 1 số điểm khác struct như sau:
+Tính kế thừa.
+Cho phép ép kiểu hoặc check kiểu lúc chương trình chạy runtime.
+Tính huỷ: cho phép instance của một class phải phóng bất cứ tài nguyên nào mà nó đã gán, hàm huỷ được gọi ngay trước khi instance của một class được giải phóng (trả lại bộ nhớ đã được cấp phát tới ram).
+Class là kiểu tham chiếu, và chính vì nó là kiểu tham chiếu nên nó có thêm toán tử đồng nhất thức (===), có nghĩa rằng hai biến hoặc hằng của kiểu class tham chiếu tới chính xác cùng một instance của class.
+class Person
+{
+    var name:String
+    var age:Int
+    var gender:String
+}
+-------------------------------------+++++++++++--------------------------------------------
+deinit: được gọi ngay khi instance của 1 class được giải phóng vùng nhớ trong vùng nhớ heap.
+class Person
+{
+    var name:String
+    var age:Int
+    var gender:String
+deinit
+   {
+        // Giải phóng vùng nhớ trong heap.
+   }
+}
+-------------------------------------+++++++++++--------------------------------------------
+enum : Giúp định nghĩa 1 tập hợp có số phần tử cố định và được liệt kê sẵn. Enum là kiểu tham trị.
+enum Gender
+{
+    case male
+    case female
+}
+-------------------------------------+++++++++++--------------------------------------------
+extension : Cho phép mở rộng thêm hàm từ 1 class hoặc struct hoặc enum hoặc protocol.
+class Person
+{
+    var name:String = ""
+    var age:Int = 0
+    var gender:String = ""
+}
+extension Person
+{
+    func printInfo()
+    {
+        print("My name is \(name), I'm \(age) years old and I'm a \(gender).")
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+fileprivate : là 1 access control giới hạn trong 1 file, thường dùng cho extension.
+class Person
+{
+    fileprivate var jobTitle:String = ""
+}
+extension Person
+{
+// nếu mà khai báo bằng private là compiler báo lỗi
+    func printJobTitle()
+    {
+        print("My job is \(jobTitle)")
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+func : cho phép khai báo 1 hàm.
+func addNumbers(num1:Int, num2:Int) -> Int
+{
+    return num1+num2
+}
+-------------------------------------+++++++++++--------------------------------------------
+import : Cho phép nhúng 1 framework hoặc 1 module khác vào trong module hiện có.
+import UIKit
+//All of UIKit's code is now available
+class Foo {}
+-------------------------------------+++++++++++--------------------------------------------
+init : là quá trình chuẩn bị một instance của class, struct, hoặc enum để sử dụng.
+class Person
+{
+    init()
+    {
+        //Set default values, prep for use, etc.
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+inout : Tham số chỉ tồn tại trong phạm vi của hàm, nên sử dụng inout sẽ giúp thay đổi giá trị của một tham số của hàm và sự thay đổi đó vẫn còn khi hàm kết thúc. Khi gọi hàm phải đặt dấu (&) ngay trước tên biến để cho trình biên dịch biết biến đó có thể thay dổi trong hàm.
+func swapInts(inout a: Int, inout _ b:Int) {
+    let temp = a
+    a = b
+    b = temp
+}
+-------------------------------------+++++++++++--------------------------------------------
+internal : Một access control cho phép sử dụng trong 1 module, không ghi gì thì mặc định là internal đó.
+class Person
+{
+    internal var jobTitle:String = ""
+}
+let aPerson = Person()
+aPerson.jobTitle = "This can set anywhere in the application"
+let : định nghĩa 1 biến bằng let là sau này không có thay đổi giá trị nó được đó.
+let constantString = "This cannot be mutated going forward"
+-------------------------------------+++++++++++--------------------------------------------
+open : Một access control cho phép object được sử dụng ở ngoài module khác . Thường viết bằng open khi tạo ra các framework.
+open var foo: String?
+operator : các toán tử cho phép chúng ta kiểm tra, thay đổi hoặc kết hợp các giá trị lại với nhau.
+let foo = 5
+let anotherFoo = -foo
+ 
+let box = 5 + 3
+let didPassCheckAll = didPassCheckOne && didPassCheckTwo
+// Toán tử 3 ngôi giúp code ngắn hơn
+let isLegalDrinkingAgeInUS = age >= 21 ? true : false
+-------------------------------------+++++++++++--------------------------------------------
+private : Một access control cho phép chỉ xài trong 1 scope.
+class Person
+{
+    private var jobTitle = ""
+}
+extension Person
+{
+// Chỗ này sẽ compile lỗi
+    func printJobTitle()
+    {
+        print("My job is \(jobTitle)")
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+protocol : định nghĩa các giao thức, class, struct hay enum mà adopt procotol này thì phải theo chuẩn của nó.
+protocol Blog
+{
+    var wordCount:Int { get set }
+    func printReaderStats()
+}
+class TTIDGPost : Blog
+{
+    var wordCount: Int
+    
+    init(wordCount: Int)
+    {
+        self.wordCount = wordCount
+    }
+func printReaderStats()
+    {
+        //Print out some stats on the post
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+public : Một access control cho phép object sử dụng ở tất cả các file trong cùng 1 module.
+public var foo: String?
+-------------------------------------+++++++++++--------------------------------------------
+static : biến nào mà được định nghĩa bằng từ khoá static thì nó tồn tại suốt trong 1 chương trình và không bị huỷ, ngoài ra sử dụng static thì ta có thể thao tác biến hoặc hàm bằng class hoặc struct hoặc enum đó luôn.
+class Person
+{
+    var jobTitle: String?
+static func assignRandomName(_ aPerson: Person)
+    {
+        aPerson.jobTitle = "Some random job"
+    }
+}
+let somePerson = Person()
+Person.assignRandomName(somePerson)
+//somePerson.jobTitle is now "Some random job"
+-------------------------------------+++++++++++--------------------------------------------
+struct : cũng là thành phần không thể thiếu trong mọi ứng dụng như class, chúng giúp chúng ta tổ chức và quản lý code thành những khối, nó có 1 số điểm khác class như sau:
+Không có tính kế thừa.
+Là kiểu tham trị.
+Không có tính huỷ.
+struct Person
+{
+    var name: String
+    var age: Int
+    var gender: String
+}
+-------------------------------------+++++++++++--------------------------------------------
+subscript : cho phép truy xuất đến 1 thành viên nằm trong một collection, list hoặc sequence.
+var postMetrics = ["Likes":422, "ReadPercentage":0.58, "Views":3409]
+let postLikes = postMetrics["Likes"]
+-------------------------------------+++++++++++--------------------------------------------
+typealias : Cho phép đặt 1 tên khác của 1 kiểu sẵn có.
+typealias JSONDictionary = [String: AnyObject]
+func parseJSON(_ deserializedData: JSONDictionary){}
+-------------------------------------+++++++++++--------------------------------------------
+var : định nghĩa 1 biến có thể thay đổi được giá trị.
+var mutableString = ""
+mutableString = "Mutated"
+Keywords in Statements
+-------------------------------------+++++++++++--------------------------------------------
+break : kết thúc chương trình trong loop, if hoặc switch
+for idx in 0...3
+{
+    if idx % 2 == 0
+    {
+        break
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+case : một trường hợp trong câu lệnh switch.
+let box = 1
+switch box
+{
+case 0:
+    print("Box equals 0")
+case 1:
+    print("Box equals 1")
+default:
+    print("Box doesn't equal 0 or 1")
+}
+-------------------------------------+++++++++++--------------------------------------------
+continue : trong vòng lặp nếu gặp continue thì nó sẽ bỏ qua trường hợp đó (ở đây trong câu lệnh if) rồi tiếp tục duyệt tiếp.
+for idx in 0...3
+{
+    if idx % 2 == 0
+    {
+        continue // Thoát khúc này thôi
+    }
+    
+    print("This code never fires on even numbers") // Vẫn in ra nhé
+}
+-------------------------------------+++++++++++--------------------------------------------
+default : xét case từ trên xuống mà ko thấy cái nào dính thì bay vào default.
+let box = 1
+switch box
+{
+case 0:
+    print("Box equals 0")
+case 1:
+    print("Box equals 1") // In mỗi thằg này ra thôi
+default:
+    print("Covers any scenario that doesn't get addressed above.")
+}
+-------------------------------------+++++++++++--------------------------------------------
+defer : sử dụng khi muốn đảm bảo thực thi 1 đoạn code nào đó ngay khi hàm kết thúc.
+func test()
+{
+    defer
+    {
+        print("2") // thằng này print sau
+    }
+    print("1") // thằng này print trước
+}
+-------------------------------------+++++++++++--------------------------------------------
+do : thực thi đoạn chương trình nào đó có khả năng xảy ra lỗi .
+do
+{
+    try expression
+    //statements
+}
+catch someError ex
+{
+    //Handle error
+}
+-------------------------------------+++++++++++--------------------------------------------
+else : Nếu không phải thằng A thì là thằng B thôi.
+if val > 1
+{
+    print("val is greater than 1")
+}
+else
+{
+    print("val is not greater than 1")
+}
+-------------------------------------+++++++++++--------------------------------------------
+fallthrough : xét trên xuống, nếu khớp 1 case nào đó vẫn tiếp tục xét tiếp 1 case liền kề
+let box = 0
+switch box
+{
+case 0:
+    print(0) // In ra 0
+    fallthrough
+case 1:
+    print(1) // In ra 1
+case 2:
+    print(2) // Không có được in ra
+default:
+    print("default")
+}
+-------------------------------------+++++++++++--------------------------------------------
+for : giúp lặp các phần tử trong 1 sequence hoặc array hoặc các kí tự trong 1 String.
+for _ in 0..<3 { print ("This prints 3 times") }
+guard : đảm bảo điều kiện nào đó đúng, vừa có thể unwrap biến optional. Thật ra xài if let cũng được, nhưng xài guard đỡ phải lồng vào trong 1 scope nhìn rối mắt.
+private func printRecordFromLastName(userLastName: String?)
+{
+    guard let name = userLastName, userLastName != "Null" else
+    {
+        //Sorry Bill Null, find a new job
+        return
+    }
+//Party on
+    print(dataStore.findByLastName(name))
+}
+-------------------------------------+++++++++++--------------------------------------------
+if : đảm bảo 1 hoặc nhiều điều kiện khi thực hiện 1 hoặc nhiều câu lệnh nào đó.
+if 1 > 2
+{
+    print("This will never execute")
+}
+-------------------------------------+++++++++++--------------------------------------------
+in : đi chung với for ở trên
+for _ in 0..<3 { print ("This prints 3 times") }
+-------------------------------------+++++++++++--------------------------------------------
+repeat : Y chang do while trong C/C++. Thực thi đoạn chương trình ít nhất 1 lần trước khi lặp qua điều kiện
+repeat
+{
+    print("Always executes at least once before the condition is considered")
+}
+while 1 > 2
+-------------------------------------+++++++++++--------------------------------------------
+return : thoát khỏi hàm luôn, và có thể trả về giá trị nào đó tuỳ chúng ta khai báo.
+func doNothing()
+{
+    return //Immediately leaves the context
+let anInt = 0
+    print("This never prints \(anInt)")
+}
+và
+func returnName() -> String?
+{
+    return self.userName //Returns the value of userName
+}
+-------------------------------------+++++++++++--------------------------------------------
+switch : xét và so sánh giá trị xem nó match với case nào, hoặc thích thì dùng if + else if + else.
+let box = 1
+switch box
+{
+case 0:
+    print("Box equals 0")
+    fallthrough
+case 1:
+    print("Box equals 0 or 1")
+default:
+    print("Box doesn't equal 0 or 1")
+}
+-------------------------------------+++++++++++--------------------------------------------
+where : dùng để ghép với for kiểm tra xem có đúng điều kiện không, hoặc dùng cho 1 loại generic type phải conform đúng protocol nào đó.
+protocol Nameable
+{
+    var name: String {get set}
+}
+func createdFormattedName<T: Nameable>(_ namedEntity: T) -> String where T: Equatable
+{
+    // Chỉ có thực thể nào mà vừa conform Nameable và Equatable thì mới dùng được hàm này
+    return "This things name is " + namedEntity.name
+}
+và
+for i in 0…3 where i % 2 == 0
+{
+    print(i) //Prints 0 and 2
+}
+-------------------------------------+++++++++++--------------------------------------------
+while : loop điều kiện nào đó cho tới khi nó sai thì thôi.
+while foo != bar
+{
+    print("Keeps going until the foo == bar")
+}
+Expressions and Types Keywords
+-------------------------------------+++++++++++--------------------------------------------
+Any : để hiện diện cho bất kỳ loại thuộc tính nào của đối tượng, bao gồm cả hàm.
+var anything = [Any]()
+anything.append("Any Swift type can be added")
+anything.append(0)
+anything.append({(foo: String) -> String in "Passed in \(foo)"})
+-------------------------------------+++++++++++--------------------------------------------
+as : dùng để ép kiểu.
+var anything = [Any]()
+anything.append("Any Swift type can be added")
+anything.append(0)
+anything.append({(foo: String) -> String in "Passed in \(foo)" })
+let intInstance = anything[1] as? Int
+hoặc
+var anything = [Any]()
+anything.append("Any Swift type can be added")
+anything.append(0)
+anything.append({(foo: String) -> String in "Passed in \(foo)" })
+for thing in anything
+{
+    switch thing
+    {
+    case 0 as Int:
+        print("It's zero and an Int type")
+    case let someInt as Int:
+        print("It's an Int that's not zero but \(someInt)")
+    default:
+        print("Who knows what it is")
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+catch : nếu trong mệnh đề clause xảy ra lỗi, thì catch sẽ xử lý lỗi đó, ta có thể catch nhiều trường hợp khác nhau như trong ví dụ dưới.
+do
+{
+    try haveAWeekend(4)
+}
+catch WeekendError.Overtime(let hoursWorked)
+{
+    print(“You worked \(hoursWorked) more than you should have”)
+}
+catch WeekendError.WorkAllWeekend
+{
+    print(“You worked 48 hours :-0“)
+}
+catch
+{
+    print(“Gulping the weekend exception”)
+}
+-------------------------------------+++++++++++--------------------------------------------
+false : biến kiểu Bool, ko phải là true.
+let alwaysFalse = false
+let alwaysTrue = true
+if alwaysFalse { print("Won't print, alwaysFalse is false 😉")}
+is : kiểm tra xem có phải loại subclass nào đó hay không.
+class Person {}
+class Programmer : Person {}
+class Nurse : Person {}
+let people = [Programmer(), Nurse()]
+for aPerson in people
+{
+    if aPerson is Programmer
+    {
+        print("This person is a dev")
+    }
+    else if aPerson is Nurse
+    {
+        print("This person is a nurse")
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+nil : Represents a stateless value for any type in Swift. *Different from Objective-C’s nil, which is a pointer to a nonexistent object. (chỗ này mình không dịch)
+class Person{}
+struct Place{}
+//Literally any Swift type or instance can be nil
+var statelessPerson: Person? = nil
+var statelessPlace: Place? = nil
+var statelessInt: Int? = nil
+var statelessString: String? = nil
+rethrows : 1 hàm ném ra 1 error nếu 1 tham số trong hàm ném ra 1 error.
+func networkCall(onComplete:() throws -> Void) rethrows
+{
+    do
+    {
+        try onComplete()
+    }
+    catch
+    {
+        throw SomeError.error
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+super : là một biến tham chiếu mà được sử dụng để tham chiếu đến đối tượng lớp cha gần nhất.
+class Person
+{
+    func printName()
+    {
+        print("Printing a name. ")
+    }
+}
+class Programmer : Person
+{
+    override func printName()
+    {
+        super.printName() // Super là Person đó
+        print("Hello World!")
+    }
+}
+let aDev = Programmer()
+aDev.printName() //"Printing a name. Hello World!"
+-------------------------------------+++++++++++--------------------------------------------
+self : là thực thể của loại mà mình đang xài đó ( có thể là class, struct hoặc enum)
+class Person
+{
+    func printSelf()
+    {
+        print("This is me: \(self)")
+    }
+}
+let aPerson = Person()
+aPerson.printSelf() //"This is me: Person"
+-------------------------------------+++++++++++--------------------------------------------
+Self : Xài trong protocol, Self chính là class, struct hoặc enum nào đó conform protocol kia.
+protocol Printable
+{
+    func printTypeTwice(otherMe:Self)
+}
+struct Foo : Printable
+{
+    func printTypeTwice(otherMe: Foo)
+    {
+        print("I am me plus \(otherMe)")
+    }
+}
+let aFoo = Foo()
+let anotherFoo = Foo()
+aFoo.printTypeTwice(otherMe: anotherFoo) //I am me plus Foo()
+-------------------------------------+++++++++++--------------------------------------------
+throw : ném ra 1 error từ 1 hàm.
+enum WeekendError: Error
+{
+    case Overtime
+    case WorkAllWeekend
+}
+func workOvertime () throws
+{
+    throw WeekendError.Overtime
+}
+-------------------------------------+++++++++++--------------------------------------------
+throws : Chỉ ra rằng 1 hàm có thể ném ra 1 lỗi nào đó.
+enum WeekendError: Error
+{
+    case Overtime
+    case WorkAllWeekend
+}
+func workOvertime () throws
+{
+    throw WeekendError.Overtime
+}
+//"throws" indicates in the function's signature that I need use try, try? or try!
+try workOvertime()
+-------------------------------------+++++++++++--------------------------------------------
+true giá trị true trong kiểu Bool.
+let alwaysFalse = false
+let alwaysTrue = true
+if alwaysTrue { print("Always prints")}
+-------------------------------------+++++++++++--------------------------------------------
+try : Khi gọi hàm thì ta phải thêm try hoặc try? hoặc try! trước hàm đó.
+let aResult = try dangerousFunction() //có lỗi là phải catch lại
+let aResult = try! dangerousFunction() //có lỗi là crash luôn
+if let aResult = try? dangerousFunction() //Unwrap 1 giá trị optional từ hàm này trả về
+Keywords Using Patterns
+-------------------------------------+++++++++++--------------------------------------------
+_ : Nói chung là bỏ qua giá trị khi nó match dc đó.
+for _ in 0..<3
+{
+    print("Just loop 3 times, index has no meaning")
+}
+hoặc
+let _ = Singleton() //Ignore value or unused variable
+-------------------------------------+++++++++++--------------------------------------------
+Keywords Using #
+#available : Kiểm tra điều kiện lúc runtime, ví dụ như kiểm tra version ios.
+if #available(iOS 10, *)
+{
+    print("iOS 10 APIs are available")
+}
+#colorLiteral : ra bộ chọn màu.
+let aColor = #colorLiteral //Brings up color picker
+#column : Biết mình đang ở cột nào.
+class Person
+{
+    func printInfo()
+    {
+        print("Some person info - on column \(#column)")
+    }
+}
+let aPerson = Person()
+aPerson.printInfo() //Some person info - on column 53
+#if #elseif #else #endif : Kiểm tra điều kiện như là đang xài hệ điều hành nào, version bao nhiêu…
+#if os(iOS)
+    print("Compiled for an iOS device")
+#elseif os(macOS)
+    print("Compiled on a mac computer")
+#endif
+#file : Trả về tên file chứa nó.
+class Person
+{
+    func printInfo()
+    {
+        print("Some person info - inside file \(#file)")
+    }
+}
+let aPerson = Person()
+aPerson.printInfo() //Some person info - inside file /*file path to the Playground file I wrote it in*/
+#function :trả về tên của function chứa nó, trong getter, setter thì sẽ trả về tên thuộc tính, trong 1 số hàm như init hoặc subscript thì sẽ trả về tên của từ khoá đó, nếu đặt ở ngay đầu file thì sẽ trả về tên của module hiện tại.
+class Person
+{
+    func printInfo()
+    {
+        print("Some person info - inside function \(#function)")
+    }
+}
+let aPerson = Person()
+aPerson.printInfo() //Some person info - inside function printInfo()
+#imageLiteral : show nguyên kho hình lên cho mình chọn.
+let anImage = #imageLiteral //Brings up a picker to select an image inside the playground file
+#line : Trả về số dòng hiện tại.
+class Person
+{
+    func printInfo()
+    {
+        print("Some person info - on line number \(#line)")
+    }
+}
+let aPerson = Person()
+aPerson.printInfo() //Some person info - on line number 5
+#selector : nói chung là đảm bảo hàm nào đó tồn tại và gắn vào 1 action nào đó.
+//Static checking occurs to make sure doAnObjCMethod exists
+control.sendAction(#selector(doAnObjCMethod), to: target, forEvent: event)
+#sourceLocation : gọi dòng này xong là reset số dòng với tên file, không còn đúng như trước lúc gọi.
+#sourceLocation(file:"foo.swift", line:6)
+//Reports new values
+print(#file)
+print(#line)
+//This resets the source code location back to the default values numbering and filename
+#sourceLocation()
+print(#file)
+print(#line)
+-------------------------------------+++++++++++--------------------------------------------
+Keywords For Specific Context(s)
+convenience : đúng theo nghĩa của nó là tiện lợi, chạy dựa trên designated initializer, mình có viết 1 bài về nó ở đây.
+class Person
+{
+    var name:String
+init(_ name:String)
+    {
+        self.name = name
+    }
+convenience init()
+    {
+        self.init("No Name")
+    }
+}
+let me = Person()
+print(me.name)//Prints "No Name"
+-------------------------------------+++++++++++--------------------------------------------
+dynamic : Nói chung là chạy bằng Objective-C runtime và Swift runtime sẽ cho ra kết quả khác nhau, thêm dynamic vào thì coi như nó chạy bằng Objective-C runtime.
+class Person
+{
+    //Implicitly has the "objc" attribute now too
+    //This is helpful for interop with libs or
+    //Frameworks that rely on or are built
+    //Around Obj-C "magic" (i.e. some KVO/KVC/Swizzling)
+    dynamic var name:String?
+}
+-------------------------------------+++++++++++--------------------------------------------
+didSet : sau khi gán xong thì nó sẽ thực hiện câu lệnh bên trong didSet
+var data = [1,2,3]
+{
+    didSet
+    {
+        tableView.reloadData()
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+final : Ngăn không cho kế thừa nữa.
+final class Person {}
+class Programmer : Person {} //Compile time error
+-------------------------------------+++++++++++--------------------------------------------
+get : dùng để trả về giá trị 1 giá trị nào đó.
+class Person
+{
+    var name:String
+    {
+        get { return self.name }
+        set { self.name = newValue}
+    }
+    var indirectSetName:String
+    {
+        get
+        {
+            if let aFullTitle = self.fullTitle
+            {
+                return aFullTitle
+            }
+            return ""
+        }
+        set (newTitle)
+        {
+            //If newTitle was absent, newValue could be used
+            self.fullTitle = "\(self.name) :\(newTitle)"
+        }
+     }
+}
+-------------------------------------+++++++++++--------------------------------------------
+indirect : Chỉ ra enum có 1 case khác liên quan tới giá trị của 1 hoặc nhiều case trong enum đó
+indirect enum Entertainment
+{
+    case eventType(String)
+    case oneEvent(Entertainment)
+    case twoEvents(Entertainment, Entertainment)
+}
+let dinner = Entertainment.eventType("Dinner")
+let movie = Entertainment.eventType("Movie")
+let dateNight = Entertainment.twoEvents(dinner, movie)
+-------------------------------------+++++++++++--------------------------------------------
+lazy : biến nào có lazy thì nó chỉ được tính toán khi nó được gọi ra, giúp tiết kiệm bộ nhớ hơn.
+class Person
+{
+    lazy var personalityTraits = {
+        //Some crazy expensive database  hit
+        return ["Nice", "Funny"]
+    }()
+}
+let aPerson = Person()
+aPerson.personalityTraits //Database hit only happens now once it's accessed for the first time
+-------------------------------------+++++++++++--------------------------------------------
+mutating : Cho phép thay đổi giá trị của thuộc tính của struct hoặc enum.
+struct Person
+{
+    var job = ""
+mutating func assignJob(newJob:String)
+    {
+        self = Person(job: newJob)
+    }
+}
+var aPerson = Person()
+aPerson.job //""
+aPerson.assignJob(newJob: "iOS Engineer at Buffer")
+aPerson.job //iOS Engineer at Buffer
+-------------------------------------+++++++++++--------------------------------------------
+nonmutating : Chỉ ra rằng hàm setter không thay đổi được instance chứa nó.
+enum Paygrade
+{
+    case Junior, Middle, Senior, Master
+    var experiencePay:String?
+    {
+        get
+        {
+            database.payForGrade(String(describing:self))
+        }
+        nonmutating set
+        {
+            if let newPay = newValue
+            {
+                database.editPayForGrade(String(describing:self), newSalary:newPay)
+            }
+        }
+    }
+}
+let currentPay = Paygrade.Middle
+//Updates Middle range pay to 45k, but doesn't mutate experiencePay
+currentPay.experiencePay = "$45,000"
+-------------------------------------+++++++++++--------------------------------------------
+optional : Sử dụng để khai báo hàm optional trong protocol.
+@objc protocol Foo
+{
+    func requiredFunction()
+    @objc optional func optionalFunction()
+}
+class Person : Foo
+{
+    func requiredFunction()
+    {
+        print("Conformance is now valid")
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+override : Chỉ ra rằng lớp con đang ghi đè lên biến hoặc hàm của lớp cha
+class Person
+{
+    func printInfo()
+    {
+        print("I'm just a person!")
+    }
+}
+class Programmer : Person
+{
+    override func printInfo()
+    {
+        print("I'm a person who is a dev!")
+    }
+}
+let aPerson = Person()
+let aDev = Programmer()
+aPerson.printInfo() //I'm just a person!
+aDev.printInfo() //I'm a person who is a dev!
+-------------------------------------+++++++++++--------------------------------------------
+required : đảm bảo rằng mọi lớp con phải thực thi hàm khởi tạo cho trước.
+class Person
+{
+    var name:String?
+required init(_ name:String)
+    {
+        self.name = name
+    }
+}
+class Programmer : Person
+{
+    //Excluding this init(name:String) would be a compiler error
+    required init(_ name: String)
+    {
+        super.init(name)
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+set : trong hàm set có thể làm gì thì làm, set giá trị cho chính property chứa nó hoặc property khác cũng được.
+class Person
+{
+    var name:String
+    {
+        get { return self.name }
+        set { self.name = newValue}
+    }
+    var indirectSetName:String
+    {
+        get
+        {
+            if let aFullTitle = self.fullTitle
+            {
+                return aFullTitle
+            }
+            return ""
+        }
+        set (newTitle)
+        {
+            //If newTitle was absent, newValue could be used
+            self.fullTitle = "\(self.name) :\(newTitle)"
+        }
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+Type : có thể là class type, struct type, enum type hoặc protocol type.
+class Person {}
+class Programmer : Person {}
+let aDev:Programmer.Type = Programmer.self
+-------------------------------------+++++++++++--------------------------------------------
+unowned : Cho phép 1 instance tham chiếu tới 1 instance khác mà không làm tăng reference count, đảm bảo rằng instance đã tham chiếu tới có lifetime bằng hoặc lâu hơn chính nó.
+class Person
+{
+    var occupation:Job?
+}
+//Khi nào người mất thì job mới mất
+class Job
+{
+    unowned let employee:Person
+    init(with employee:Person)
+    {
+        self.employee = employee
+    }
+}
+-------------------------------------+++++++++++--------------------------------------------
+weak : Cho phép 1 instance tham chiếu tới 1 instance khác mà không làm tăng reference count, nhưng instance đã tham chiếu kia có lifetime ngắn hơn (có thể bị huỷ trước)
+class Person
+{
+    var residence:House?
+}
+class House
+{
+    weak var occupant:Person?
+}
+var me:Person? = Person()
+var myHome:House? = House()
+me!.residence = myHome
+myHome!.occupant = me
+me = nil
+myHome!.occupant //Is now nil
+-------------------------------------+++++++++++--------------------------------------------
+willSet : bên trên có cái didSet là khi nào gán xong mới chạy mấy câu lệnh bên trong, còn willSet thì được gọi ngay trước khi biến được gán đâu đó. Nó có newValue là giá trị sẽ được gán đó.
+class Person
+{
+    var name:String?
+    {
+        willSet(newValue) {print("I've got a new name, it's \(newValue)!")}
+    }
+}
+let aPerson = Person()
+aPerson.name = "Jordan" //Prints out "I've got a new name, it's Jordan!" right before name is assigned to
