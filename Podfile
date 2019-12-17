@@ -8,6 +8,7 @@ target 'iOSCcodeGeneral' do
   # Pods for iOSCcodeGeneral
   pod 'Alamofire', '~> 4.4'
   pod 'AlamofireImage', '~> 3.1'
+  pod 'JNKeychain'
 
 end
 

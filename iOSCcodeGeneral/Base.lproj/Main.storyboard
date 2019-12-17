@@ -37,17 +37,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A67-eT-bif" customClass="ViewContainTabbar" customModule="iOSCcodeGeneral" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="I0P-Ol-jAq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="z1R-Lh-xWO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3t1-Bm-cF7"/>
                             <constraint firstItem="z1R-Lh-xWO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IKo-Kc-qp3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A67-eT-bif" secondAttribute="trailing" id="KNw-7D-GhP"/>
+                            <constraint firstItem="A67-eT-bif" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="OuN-OG-8Ka"/>
+                            <constraint firstItem="A67-eT-bif" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pyk-HW-qWH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="lb1" destination="o9i-wh-Cs0" id="hmE-v0-saa"/>
                         <outlet property="lb2" destination="A5A-Y1-gUz" id="7zY-1i-dxG"/>
+                        <outlet property="viewTabbar" destination="A67-eT-bif" id="bIg-Ps-pig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

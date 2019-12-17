@@ -2,20 +2,24 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - JNKeychain (0.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (~> 3.1)
+  - JNKeychain
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - JNKeychain
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  JNKeychain: fb6cc9ec95959ba46cd95d0ee6f7a05e41da9f42
 
-PODFILE CHECKSUM: 660090c266f56a11f61c73d76b7cc8338edff703
+PODFILE CHECKSUM: f5a1f50289c92d8b7934c567f7cf75980ac62e24
 
 COCOAPODS: 1.8.4

@@ -92,4 +92,18 @@ extension UIViewController {
         }
     }
     
+    //MARK: - Add Child Controller
+    func displayContentController(content: UIViewController) {
+        addChild(content)
+        self.view.addSubview(content.view)
+        content.didMove(toParent: self)
+    }
+    
+    //MARK: - Add Remove Controller
+    func hideContentController(content: UIViewController) {
+        content.willMove(toParent: nil)
+        content.view.removeFromSuperview()
+        content.removeFromParent()
+    }
+    
 }

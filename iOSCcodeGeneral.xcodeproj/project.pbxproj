@@ -46,6 +46,14 @@
 		C37B816823A87F560043ED2D /* Extension+NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B816723A87F560043ED2D /* Extension+NSNumber.swift */; };
 		C37B816A23A87F900043ED2D /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B816923A87F900043ED2D /* Extension+UIButton.swift */; };
 		C37B816D23A880EC0043ED2D /* CommonFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B816C23A880EC0043ED2D /* CommonFunc.swift */; };
+		C37B817023A893770043ED2D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B816F23A893770043ED2D /* ImagePicker.swift */; };
+		C37B817323A8A7830043ED2D /* ViewContainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B817223A8A7830043ED2D /* ViewContainTabbar.swift */; };
+		C37B817523A8A7940043ED2D /* ViewContainTabbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C37B817423A8A7940043ED2D /* ViewContainTabbar.xib */; };
+		C37B817B23A8AAAE0043ED2D /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B817923A8AAAE0043ED2D /* ViewController1.swift */; };
+		C37B817C23A8AAAE0043ED2D /* ViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C37B817A23A8AAAE0043ED2D /* ViewController1.xib */; };
+		C37B817F23A8AAB80043ED2D /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B817D23A8AAB80043ED2D /* ViewController2.swift */; };
+		C37B818023A8AAB80043ED2D /* ViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C37B817E23A8AAB80043ED2D /* ViewController2.xib */; };
+		C37B818323A8C92C0043ED2D /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37B818223A8C92C0043ED2D /* KeyChain.swift */; };
 		DDE893722D1A8CDBED85FB92 /* Pods_iOSCcodeGeneral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA73E0CD67658B5036E94B /* Pods_iOSCcodeGeneral.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +101,14 @@
 		C37B816723A87F560043ED2D /* Extension+NSNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSNumber.swift"; sourceTree = "<group>"; };
 		C37B816923A87F900043ED2D /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		C37B816C23A880EC0043ED2D /* CommonFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunc.swift; sourceTree = "<group>"; };
+		C37B816F23A893770043ED2D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C37B817223A8A7830043ED2D /* ViewContainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContainTabbar.swift; sourceTree = "<group>"; };
+		C37B817423A8A7940043ED2D /* ViewContainTabbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewContainTabbar.xib; sourceTree = "<group>"; };
+		C37B817923A8AAAE0043ED2D /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		C37B817A23A8AAAE0043ED2D /* ViewController1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController1.xib; sourceTree = "<group>"; };
+		C37B817D23A8AAB80043ED2D /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		C37B817E23A8AAB80043ED2D /* ViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController2.xib; sourceTree = "<group>"; };
+		C37B818223A8C92C0043ED2D /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		D42E921AE3ECD0331359F17D /* Pods-iOSCcodeGeneral.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCcodeGeneral.release.xcconfig"; path = "Target Support Files/Pods-iOSCcodeGeneral/Pods-iOSCcodeGeneral.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +145,8 @@
 		C31B693323A77233000BEF82 /* iOSCcodeGeneral */ = {
 			isa = PBXGroup;
 			children = (
+				C37B817823A8AA9F0043ED2D /* New Group */,
+				C37B817123A8A75A0043ED2D /* ViewContainTabbar */,
 				C324393C23A79277005C38D9 /* Views */,
 				C31B695823A77559000BEF82 /* Model */,
 				C31B694B23A77321000BEF82 /* Utilities */,
@@ -173,6 +191,8 @@
 		C31B695923A77567000BEF82 /* Helps */ = {
 			isa = PBXGroup;
 			children = (
+				C37B818123A8C91A0043ED2D /* Keychain */,
+				C37B816E23A893660043ED2D /* ImagePicker */,
 				C37B816B23A880DC0043ED2D /* CommonFunc */,
 				C37B815123A872280043ED2D /* BaseLocal */,
 				C324394223A79361005C38D9 /* Extensions */,
@@ -301,6 +321,42 @@
 			path = CommonFunc;
 			sourceTree = "<group>";
 		};
+		C37B816E23A893660043ED2D /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				C37B816F23A893770043ED2D /* ImagePicker.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		C37B817123A8A75A0043ED2D /* ViewContainTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				C37B817223A8A7830043ED2D /* ViewContainTabbar.swift */,
+				C37B817423A8A7940043ED2D /* ViewContainTabbar.xib */,
+			);
+			path = ViewContainTabbar;
+			sourceTree = "<group>";
+		};
+		C37B817823A8AA9F0043ED2D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				C37B817923A8AAAE0043ED2D /* ViewController1.swift */,
+				C37B817A23A8AAAE0043ED2D /* ViewController1.xib */,
+				C37B817D23A8AAB80043ED2D /* ViewController2.swift */,
+				C37B817E23A8AAB80043ED2D /* ViewController2.xib */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		C37B818123A8C91A0043ED2D /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				C37B818223A8C92C0043ED2D /* KeyChain.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		C38C2E2451C5479BFAE4B6B1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,9 +434,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C37B817C23A8AAAE0043ED2D /* ViewController1.xib in Resources */,
 				C31B694123A77237000BEF82 /* LaunchScreen.storyboard in Resources */,
 				C31B695B23A775BC000BEF82 /* DeclarationKeywords.txt in Resources */,
 				C31B693E23A77237000BEF82 /* Assets.xcassets in Resources */,
+				C37B817523A8A7940043ED2D /* ViewContainTabbar.xib in Resources */,
+				C37B818023A8AAB80043ED2D /* ViewController2.xib in Resources */,
 				C31B693C23A77233000BEF82 /* Main.storyboard in Resources */,
 				C324393423A790DD005C38D9 /* AlertViewController.xib in Resources */,
 			);
@@ -452,6 +511,7 @@
 				C31B695723A774C3000BEF82 /* BaseModel.swift in Sources */,
 				C37B815A23A878860043ED2D /* Extension+String.swift in Sources */,
 				C37B814623A86B620043ED2D /* Extension+UILabel.swift in Sources */,
+				C37B817023A893770043ED2D /* ImagePicker.swift in Sources */,
 				C37B815623A874610043ED2D /* Extension+UITableView.swift in Sources */,
 				C37B814823A86BD50043ED2D /* Extension+UITextField.swift in Sources */,
 				C31B693923A77233000BEF82 /* ViewController.swift in Sources */,
@@ -459,16 +519,20 @@
 				C37B816023A87C8E0043ED2D /* Extension+Int.swift in Sources */,
 				C324392C23A78FEA005C38D9 /* BaseTableView.swift in Sources */,
 				C37B816423A87DDE0043ED2D /* Extension+Error.swift in Sources */,
+				C37B818323A8C92C0043ED2D /* KeyChain.swift in Sources */,
 				C37B816D23A880EC0043ED2D /* CommonFunc.swift in Sources */,
 				C37B815823A874CF0043ED2D /* Extension+UICollectionView.swift in Sources */,
 				C31B693523A77233000BEF82 /* AppDelegate.swift in Sources */,
 				C37B814C23A86D4F0043ED2D /* Extension+UINavigationController.swift in Sources */,
+				C37B817F23A8AAB80043ED2D /* ViewController2.swift in Sources */,
 				C37B815C23A87ABB0043ED2D /* Extension+UIImageView.swift in Sources */,
 				C324393E23A7928B005C38D9 /* NibView.swift in Sources */,
 				C31B695423A77321000BEF82 /* ServiceManager.swift in Sources */,
 				C37B814A23A86C110043ED2D /* Extension+UITapGestureRecognizer.swift in Sources */,
+				C37B817323A8A7830043ED2D /* ViewContainTabbar.swift in Sources */,
 				C31B695523A77321000BEF82 /* ImageHelper.swift in Sources */,
 				C324394123A79309005C38D9 /* StyleApp.swift in Sources */,
+				C37B817B23A8AAAE0043ED2D /* ViewController1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
