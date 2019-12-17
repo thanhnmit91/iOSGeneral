@@ -22,6 +22,7 @@ enum AppFont: String {
     static func setFontPlaceholder() -> UIFont {
         return AppFont.light.sizeFont(withSize: .h16)
     }
+    
 }
 
 enum FontSize: Int {

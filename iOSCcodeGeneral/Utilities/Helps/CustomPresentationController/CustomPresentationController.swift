@@ -68,7 +68,7 @@ class CustomPresentationController : UIPresentationController {
         guard let presentedView = self.presentedView else { return }
         
         presentedView.layer.masksToBounds = true
-        presentedView.roundCorners(corners: self.roundedCorners, radius: self.cornerRadius)
+//        presentedView.roundCorners(corners: self.roundedCorners, radius: self.cornerRadius)
         presentedView.addGestureRecognizer(self.panGesture)
     }
     

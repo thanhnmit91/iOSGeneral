@@ -61,7 +61,10 @@ private extension NibView {
 
 extension NibView{
     func setAttribute(_ placeholder: String?) -> NSAttributedString {
-        return NSAttributedString(string: placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor: MainColors.colorPlaceHolder, NSAttributedString.Key.font: AppFont.setFontPlaceholder()])
+        return NSAttributedString(string: placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor:
+//            MainColors.colorPlaceHolder
+            UIColor.gray
+            , NSAttributedString.Key.font: AppFont.setFontPlaceholder()])
     }
 }
 
